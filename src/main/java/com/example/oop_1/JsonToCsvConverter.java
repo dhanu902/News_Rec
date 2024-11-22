@@ -11,8 +11,8 @@ public class JsonToCsvConverter {
 
     public static void main(String[] args) {
         // File paths
-        String jsonFilePath = "C:\\Users\\HI\\IdeaProjects\\OOP_1\\News_Category_Dataset_v3.json";
-        String csvFilePath = "C:\\Users\\HI\\IdeaProjects\\OOP_1\\Book1.csv";
+        String jsonFilePath = "News_Category_Dataset_v3.json";
+        String csvFilePath = "Book1.csv";
 
         // Read JSON and write to CSV
         try {
@@ -35,6 +35,9 @@ public class JsonToCsvConverter {
     // Method to write a list of Article objects to a CSV file
     public static void writeCsvFile(List<NewsArticle> articles, String filePath) throws IOException {
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath))) {
+
+            System.out.println("Writing CSV file to " + filePath);
+            System.out.println("Number of articles: " + articles.size());
             // Write header row
             String[] header = {"Link", "Headline", "Category", "Short Description", "Authors", "Date"};
             writer.writeNext(header);

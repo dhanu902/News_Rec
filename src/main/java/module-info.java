@@ -1,4 +1,4 @@
-module com.example.oop_1 {
+module com.example.oop_ {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.gson;
