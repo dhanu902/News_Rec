@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -12,71 +10,7 @@
    <children>
       <StackPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #348954;">
          <children>
-            <Pane fx:id="paneLogin" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #264f01;">
-               <children>
-                  <SplitPane dividerPositions="0.18561872909698995" layoutX="24.0" layoutY="65.0" prefHeight="275.0" prefWidth="556.0">
-                     <items>
-                        <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #005670;">
-                           <children>
-                              <Button fx:id="btnLogin_F" layoutX="27.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnClicks1" text="Login" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #005670;">
-                           <children>
-                              <Label layoutX="37.0" layoutY="152.0" text="User Name" />
-                              <Label layoutX="41.0" layoutY="196.0" text="Password" />
-                              <TextField layoutX="148.0" layoutY="148.0" prefHeight="25.0" prefWidth="274.0" />
-                              <TextField layoutX="148.0" layoutY="192.0" prefHeight="25.0" prefWidth="274.0" />
-                           </children></Pane>
-                     </items>
-                  </SplitPane>
-               </children>
-            </Pane>
-            <Pane fx:id="paneRegister" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #816909;">
-               <children>
-                  <SplitPane dividerPositions="0.7942238267148014" layoutX="24.0" layoutY="66.0" prefHeight="273.0" prefWidth="556.0">
-                     <items>
-                        <Pane prefHeight="287.0" prefWidth="437.0" style="-fx-background-color: #007895;">
-                           <children>
-                              <TextField layoutX="113.0" layoutY="68.0" prefHeight="25.0" prefWidth="310.0" />
-                              <Label layoutX="26.0" layoutY="72.0" text="Name" />
-                              <Label layoutX="23.0" layoutY="143.0" text="Birthday" />
-                              <Label layoutX="33.0" layoutY="177.0" text="Sex" />
-                              <Label layoutX="28.0" layoutY="108.0" text="Email" />
-                              <TextField layoutX="113.0" layoutY="104.0" prefHeight="25.0" prefWidth="310.0" />
-                              <TextField layoutX="113.0" layoutY="139.0" prefHeight="25.0" prefWidth="310.0" />
-                              <TextField layoutX="113.0" layoutY="173.0" prefHeight="25.0" prefWidth="310.0" />
-                              <Label layoutX="7.0" layoutY="212.0" text="Create Password" />
-                              <TextField layoutX="113.0" layoutY="208.0" prefHeight="25.0" prefWidth="310.0" />
-                           </children></Pane>
-                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #007895;">
-                           <children>
-                              <Button fx:id="btnRegister_F" layoutX="28.0" layoutY="222.0" mnemonicParsing="false" onAction="#btnClicks1" text="Register" />
-                           </children>
-                        </Pane>
-                     </items>
-                  </SplitPane>
-               </children>
-            </Pane>
-            <Pane fx:id="paneHome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <SplitPane dividerPositions="0.6945898778359512" layoutX="12.0" layoutY="11.0" prefHeight="373.0" prefWidth="575.0" style="-fx-background-color: #820495;">
-                     <items>
-                        <Pane prefHeight="371.0" prefWidth="336.0">
-                           <children>
-                              <Button layoutX="329.0" layoutY="332.0" mnemonicParsing="false" text="Skip" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="371.0" prefWidth="438.0" style="-fx-background-color: #8a014f;">
-                           <children>
-                              <Button layoutX="42.0" layoutY="332.0" mnemonicParsing="false" text="Recommends" />
-                           </children>
-                        </Pane>
-                     </items>
-                  </SplitPane>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="paneRec" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
                   <SplitPane dividerPositions="0.20767888307155322" layoutX="13.0" layoutY="14.0" prefHeight="373.0" prefWidth="575.0" style="-fx-background-color: #820495;">
                      <items>
@@ -94,7 +28,7 @@
                   </SplitPane>
                </children>
             </Pane>
-            <Pane fx:id="paneLnR" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #006;">
+            <Pane fx:id="paneLnR" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #ffffff;">
                <children>
                   <SplitPane dividerPositions="0.5" layoutX="24.0" layoutY="62.0" prefHeight="277.0" prefWidth="556.0">
                      <items>
