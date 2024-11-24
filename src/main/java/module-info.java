@@ -8,7 +8,6 @@ module com.example.oop_ {
     requires org.mongodb.driver.core;
     requires com.opencsv;
 
-
-    opens com.example.oop_1 to javafx.fxml;
+    opens com.example.oop_1 to javafx.fxml, com.google.gson;
     exports com.example.oop_1;
 }

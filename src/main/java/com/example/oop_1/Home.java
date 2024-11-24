@@ -34,7 +34,13 @@ public class Home {
     @FXML
     private Label titleLabel;
     @FXML
+    private Label categoryLabel;
+    @FXML
     private Label descriptionLabel;
+    @FXML
+    private Label authorLabel;
+    @FXML
+    private Label urlLabel;
     @FXML
     private Label publishedAtLabel;
 
@@ -50,7 +56,7 @@ public class Home {
 
         ObservableList<String> titles = FXCollections.observableArrayList();
         for (NewsArticle article : newsArticles) {
-            titles.add(article.getTitle());
+            titles.add(article.getHeadline());
         }
 
         articleListView.setItems(titles);
@@ -59,9 +65,12 @@ public class Home {
         articleListView.getSelectionModel().selectedIndexProperty().addListener((obs, oldIndex, newIndex) -> {
             if (newIndex != null && newIndex.intValue() >= 0) {
                 NewsArticle selectedArticle = newsArticles.get(newIndex.intValue());
-                titleLabel.setText(selectedArticle.getTitle());
-                descriptionLabel.setText(selectedArticle.getDescription());
-                publishedAtLabel.setText(selectedArticle.getCategory());
+                titleLabel.setText(selectedArticle.getHeadline());
+                categoryLabel.setText(selectedArticle.getCategory());
+                descriptionLabel.setText(selectedArticle.getShort_description());
+                authorLabel.setText(selectedArticle.getAuthors());
+                urlLabel.setText(selectedArticle.getUrl());
+                publishedAtLabel.setText(selectedArticle.getDate());
             }
         });
     }

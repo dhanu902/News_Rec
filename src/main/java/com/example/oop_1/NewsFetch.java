@@ -20,7 +20,7 @@ public class NewsFetch {
                 String authors = line[4];
                 String date = line[5];
 
-                articles.add(new NewsArticle(headline, shortDescription, category, link, date, authors));
+                articles.add(new NewsArticle(link, headline, category, shortDescription, authors, date));
             }
         } catch (Exception e) {
             e.printStackTrace();
