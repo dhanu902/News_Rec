@@ -98,16 +98,11 @@ public class UserLogin implements Initializable {
     @FXML
     void btnBack_L_Clicked(ActionEvent event) {
         try {
-            ((Node) event.getSource()).getScene().getWindow().hide();
-            Stage ownerStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
-            Scene scene = new Scene(root);
-            ownerStage.setTitle("Home");
-            ownerStage.setScene(scene);
-            ownerStage.show();
+            Node sourceNode = (Node) event.getSource();
+            WindowChangeAction.closeCurrentWindow(sourceNode);
+            WindowChangeAction.showNewStage("hello-view.fxml", "Home");
         } catch (IOException ex) {
-            Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
-            message.showAndWait();
+            WindowChangeAction.showAlert("Loading Failure");
         }
     }
 }

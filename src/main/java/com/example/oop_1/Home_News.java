@@ -4,30 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
-public class Home {
+public class Home_News {
     @FXML
     private Button btnBack_H;
     @FXML
-    private Button btnBack_Rc;
-    @FXML
     private Button btnRec;
-    @FXML
-    private Pane paneHome;
 
     @FXML
     private ListView<String> articleListView;
@@ -77,16 +67,46 @@ public class Home {
     @FXML
     void btnBack_H_Clicked(ActionEvent event) {
         try {
-            ((Node) event.getSource()).getScene().getWindow().hide();
-            Stage ownerStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
-            Scene scene = new Scene(root);
-            ownerStage.setTitle("Home");
-            ownerStage.setScene(scene);
-            ownerStage.show();
+            Node sourceNode = (Node) event.getSource();
+            WindowChangeAction.closeCurrentWindow(sourceNode);
+            WindowChangeAction.showNewStage("Log-view.fxml", "Login");
         } catch (IOException ex) {
-            Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
-            message.showAndWait();
+            WindowChangeAction.showAlert("Loading Failure");
+        }
+    }
+
+    @FXML
+    void btnRec_Clicked(ActionEvent event) {
+        try {
+            Node sourceNode = (Node) event.getSource();
+            WindowChangeAction.closeCurrentWindow(sourceNode);
+            WindowChangeAction.showNewStage("Recommendation-view.fxml", "Recommendations for x");
+        } catch (IOException ex) {
+            WindowChangeAction.showAlert("Loading Failure");
+        }
+    }
+
+
+    @FXML
+    private HBox ratingBox;
+    @FXML
+    private Button btnStar1;
+    @FXML
+    private Button btnStar2;
+    @FXML
+    private Button btnStar3;
+    @FXML
+    private Button btnStar4;
+    @FXML
+    private Button btnStar5;
+
+    @FXML
+    private void handleStarClick(javafx.event.ActionEvent event) {
+        Button clickedStar = (Button) event.getSource();
+        int rating = ratingBox.getChildren().indexOf(clickedStar) + 1;
+        for (int i = 0; i < ratingBox.getChildren().size(); i++) {
+            Button starButton = (Button) ratingBox.getChildren().get(i);
+            starButton.setText(i < rating ? "★" : "☆");
         }
     }
 }

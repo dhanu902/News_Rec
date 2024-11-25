@@ -6,12 +6,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -88,17 +85,12 @@ public class UserRegister {
 
     @FXML
     void btnBack_R_Clicked(ActionEvent event) {
-        try{
-            ((Node)event.getSource()).getScene().getWindow().hide();
-            Stage ownerStage = new Stage();
-            Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
-            Scene scene = new Scene(root);
-            ownerStage.setTitle("Home");
-            ownerStage.setScene(scene);
-            ownerStage.show();
-        }catch (IOException ex){
-            Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
-            message.showAndWait();
+        try {
+            Node sourceNode = (Node) event.getSource();
+            WindowChangeAction.closeCurrentWindow(sourceNode);
+            WindowChangeAction.showNewStage("hello-view.fxml", "Home");
+        } catch (IOException ex) {
+            WindowChangeAction.showAlert("Loading Failure");
         }
     }
 }

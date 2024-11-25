@@ -5,11 +5,12 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="509.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.Home">
+<AnchorPane prefHeight="509.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.Home_News">
    <children>
       <StackPane prefHeight="509.0" prefWidth="678.0">
          <children>
@@ -19,26 +20,34 @@
                      <items>
                         <Pane prefHeight="371.0" prefWidth="336.0">
                            <children>
-                              <Button layoutX="400.0" layoutY="447.0" mnemonicParsing="false" text="Skip" />
                               <Button fx:id="btnBack_H" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnBack_H_Clicked" text="Back" />
-                              <Label fx:id="titleLabel" layoutX="19.0" layoutY="21.0" prefHeight="36.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
+                              <Label fx:id="titleLabel" layoutX="19.0" layoutY="10.0" prefHeight="36.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold Italic" size="16.0" />
                                  </font></Label>
-                              <Label fx:id="descriptionLabel" layoutX="19.0" layoutY="113.0" prefHeight="219.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER" />
-                              <Label fx:id="authorLabel" layoutX="61.0" layoutY="344.0" prefHeight="25.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
-                              <Label fx:id="publishedAtLabel" layoutX="125.0" layoutY="382.0" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #ffffff;" />
-                              <Label fx:id="urlLabel" layoutX="23.0" layoutY="418.0" prefHeight="25.0" prefWidth="407.0" style="-fx-background-color: #ffffff;" />
-                              <Label fx:id="categoryLabel" layoutX="19.0" layoutY="72.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #ffffff;">
+                              <Label fx:id="descriptionLabel" layoutX="19.0" layoutY="90.0" prefHeight="219.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" />
+                              <Label fx:id="authorLabel" layoutX="19.0" layoutY="322.0" prefHeight="25.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
+                              <Label fx:id="publishedAtLabel" layoutX="19.0" layoutY="358.0" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #ffffff;" />
+                              <Label fx:id="urlLabel" layoutX="19.0" layoutY="394.0" prefHeight="25.0" prefWidth="407.0" style="-fx-background-color: #ffffff;" />
+                              <Label fx:id="categoryLabel" layoutX="19.0" layoutY="55.0" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #ffffff;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
+                              <HBox fx:id="ratingBox" layoutX="170.0" layoutY="431.0" prefHeight="51.0" prefWidth="280.0" style="-fx-background-color: #ffd400;">
+                                 <children>
+                                    <Button fx:id="btnStar1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleStarClick" prefHeight="51.0" prefWidth="56.0" style="-fx-font-size: 24; -fx-background-color: #ffffff;" text="☆" />
+                                    <Button fx:id="btnStar2" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleStarClick" prefHeight="51.0" prefWidth="56.0" style="-fx-font-size: 24; -fx-background-color: #ffffff;" text="☆" />
+                                    <Button fx:id="btnStar3" layoutX="66.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleStarClick" prefHeight="51.0" prefWidth="56.0" style="-fx-font-size: 24; -fx-background-color: #ffffff;" text="☆" />
+                                    <Button fx:id="btnStar4" layoutX="122.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleStarClick" prefHeight="51.0" prefWidth="56.0" style="-fx-font-size: 24; -fx-background-color: #ffffff;" text="☆" />
+                                    <Button fx:id="btnStar5" layoutX="178.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleStarClick" prefHeight="51.0" prefWidth="56.0" style="-fx-font-size: 24; -fx-background-color: #ffffff;" text="☆" />
+                                 </children>
+                              </HBox>
                            </children>
                         </Pane>
                         <Pane prefHeight="371.0" prefWidth="438.0" style="-fx-background-color: #8a014f;">
                            <children>
-                              <Button layoutX="55.0" layoutY="447.0" mnemonicParsing="false" text="Recommends" />
+                              <Button fx:id="btnRec" layoutX="55.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnRec_Clicked" text="Recommends" />
                               <ListView fx:id="articleListView" layoutX="32.0" layoutY="14.0" prefHeight="302.0" prefWidth="134.0" />
                            </children>
                         </Pane>

@@ -7,6 +7,7 @@ module com.example.oop_ {
     requires java.logging;
     requires org.mongodb.driver.core;
     requires com.opencsv;
+    requires java.desktop;
 
     opens com.example.oop_1 to javafx.fxml, com.google.gson;
     exports com.example.oop_1;

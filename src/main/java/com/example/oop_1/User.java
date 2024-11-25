@@ -1,0 +1,86 @@
+package com.example.oop_1;
+
+import java.util.List;
+
+public class User {
+    private String id;                // User ID (could be MongoDB ObjectId)
+    private String username;          // User's name
+    private String email;             // User's email
+    private String password;          // User's password (store securely, e.g., hashed)
+    private String gender;            // User's gender
+    private List<String> preferences; // User preferences (e.g., categories, topics)
+
+    // Constructors
+    public User() {}
+
+    public User(String id, String username, String email, String password, String gender, List<String> preferences) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.preferences = preferences;
+    }
+
+    // Getters and setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public List<String> getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(List<String> preferences) {
+        this.preferences = preferences;
+    }
+
+    // toString method (for debugging)
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                ", preferences=" + preferences +
+                '}';
+    }
+}
