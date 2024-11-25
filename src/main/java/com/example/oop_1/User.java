@@ -1,9 +1,11 @@
 package com.example.oop_1;
 
+import org.bson.types.ObjectId;
+
 import java.util.List;
 
 public class User {
-    private String id;                // User ID (could be MongoDB ObjectId)
+    private ObjectId id;              // User ID (could be MongoDB ObjectId)
     private String username;          // User's name
     private String email;             // User's email
     private String password;          // User's password (store securely, e.g., hashed)
@@ -11,9 +13,7 @@ public class User {
     private List<String> preferences; // User preferences (e.g., categories, topics)
 
     // Constructors
-    public User() {}
-
-    public User(String id, String username, String email, String password, String gender, List<String> preferences) {
+    public User(ObjectId id, String username, String email, String password, String gender, List<String> preferences) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -23,50 +23,32 @@ public class User {
     }
 
     // Getters and setters
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
+    public ObjectId getId() {return id;}
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
+    public String getUsername() {return username;}
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
+    public String getEmail() {return email;}
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
+    public String getPassword() {return password;}
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
+    public String getGender() {return gender;}
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public List<String> getPreferences() {
-        return preferences;
-    }
-
+    public List<String> getPreferences() {return preferences;}
     public void setPreferences(List<String> preferences) {
         this.preferences = preferences;
     }

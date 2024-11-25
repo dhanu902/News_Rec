@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UserLogin implements Initializable {
@@ -45,15 +44,16 @@ public class UserLogin implements Initializable {
         MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
         database = mongoClient.getDatabase("UserDB");
     }
+
     @FXML
     public void Login_F(ActionEvent event) {
-        String USERname = text_nameL.getText();
-        String PASSword = text_passwordL.getText();
+        String pass_USERname = text_nameL.getText();
+        String pass_PASSword = text_passwordL.getText();
 
         try {
             MongoCollection<Document> collection = database.getCollection("Users");
 
-            Document result = collection.find(Filters.eq("U_Name", USERname)).first();
+            Document result = collection.find(Filters.eq("U_Name", pass_USERname)).first();
             //Document result = collection.find(query).first();
             System.out.println(result);
 
@@ -61,14 +61,14 @@ public class UserLogin implements Initializable {
                 username = result.getString("U_Name");
                 password = result.getString("U_Password");
 
-                if (PASSword.equals(password)) {
+                if (pass_PASSword.equals(password)) {
                     // Successful login
                     try {
                         ((Node) event.getSource()).getScene().getWindow().hide();
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
                         Parent root = loader.load();
-                        //HelloController controller = loader.getController();
-                        //controller.setName(username);
+                        // Home_News controller = loader.getController();
+                        // controller.setName(username);
                         Stage ownerStage = new Stage();
                         Scene scene = new Scene(root);
                         ownerStage.setTitle("Home");
@@ -105,4 +105,5 @@ public class UserLogin implements Initializable {
             WindowChangeAction.showAlert("Loading Failure");
         }
     }
+
 }
