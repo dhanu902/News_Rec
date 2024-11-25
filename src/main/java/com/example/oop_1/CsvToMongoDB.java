@@ -1,7 +1,4 @@
 package com.example.oop_1;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.mongodb.client.*;
 import com.opencsv.CSVReader;
 import org.bson.Document;
@@ -12,7 +9,7 @@ import java.util.List;
 
 public class CsvToMongoDB {
 
-    private static final Logger logger = LoggerFactory.getLogger(CsvToMongoDB.class);
+    private static final System.Logger logger = System.getLogger(CsvToMongoDB.class.getName());
 
     public static void main(String[] args) {
         // MongoDB connection details
@@ -30,9 +27,9 @@ public class CsvToMongoDB {
             // Step 2: Save documents to MongoDB
             saveToMongoDB(mongoUri, databaseName, collectionName, documents);
 
-            logger.info("CSV data successfully saved to MongoDB!");
+            logger.log(System.Logger.Level.INFO, "CSV data successfully saved to MongoDB!");
         } catch (Exception e) {
-            logger.error("An error occurred while processing the CSV file or saving to MongoDB.", e);
+            logger.log(System.Logger.Level.ERROR, "An error occurred while processing the CSV file or saving to MongoDB.", e);
         }
     }
 
@@ -65,7 +62,7 @@ public class CsvToMongoDB {
             // Insert all documents into the collection
             collection.insertMany(documents);
         } catch (Exception e) {
-            logger.error("An error occurred while connecting to MongoDB or inserting documents.", e);
+            logger.log(System.Logger.Level.ERROR, "An error occurred while connecting to MongoDB or inserting documents.", e);
         }
     }
 }
