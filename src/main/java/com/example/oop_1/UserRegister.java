@@ -13,6 +13,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class UserRegister {
     MongoClient mongoClient;
@@ -126,7 +127,7 @@ public class UserRegister {
                 Email,
                 Password,
                 Gender,
-                null // Preferences initially empty
+                new Document() // Preferences initially empty
         );
     }
 

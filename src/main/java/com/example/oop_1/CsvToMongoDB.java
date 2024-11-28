@@ -40,9 +40,11 @@ public class CsvToMongoDB {
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
             String[] headers = reader.readNext(); // Read the header row
             String[] line;
+            int id = 1;
 
             while ((line = reader.readNext()) != null) {
                 Document doc = new Document();
+                doc.append("id", id++);
                 for (int i = 0; i < headers.length; i++) {
                     doc.append(headers[i], line[i]); // Add key-value pairs to the document
                 }

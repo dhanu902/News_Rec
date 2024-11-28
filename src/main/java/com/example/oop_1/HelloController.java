@@ -16,22 +16,22 @@ public class HelloController {
     private Button btnLogin_I;
     @FXML
     private Button btnRegister_I;
+    @FXML
+    private Button btnLogin_U;
+    @FXML
+    private Button btnLogin_A;
+    @FXML
+    private Button btnBack_L;
+
+    @FXML
+    private Pane paneLogin_I;
+    @FXML
+    private Pane paneLnR;
 
     @FXML
     public void btnClicks1(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnLogin_I) {
-            try{
-                ((Node)actionEvent.getSource()).getScene().getWindow().hide();
-                Stage ownerStage = new Stage();
-                Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Log-view.fxml")));
-                Scene scene = new Scene(root);
-                ownerStage.setTitle("Register");
-                ownerStage.setScene(scene);
-                ownerStage.show();
-            }catch (IOException ex){
-                Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
-                message.showAndWait();
-            }
+            paneLogin_I.toFront();
         }
         if (actionEvent.getSource() == btnRegister_I){
             try{
@@ -46,6 +46,26 @@ public class HelloController {
                 Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
                 message.showAndWait();
             }
+        }
+    }
+
+    public void btnClicks2(ActionEvent actionEvent){
+        if (actionEvent.getSource() == btnLogin_U){
+            try{
+                ((Node)actionEvent.getSource()).getScene().getWindow().hide();
+                Stage ownerStage = new Stage();
+                Pane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Log-view.fxml")));
+                Scene scene = new Scene(root);
+                ownerStage.setTitle("Login");
+                ownerStage.setScene(scene);
+                ownerStage.show();
+            }catch (IOException ex){
+                Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
+                message.showAndWait();
+            }
+        }
+        if (actionEvent.getSource() == btnBack_L){
+            paneLnR.toFront();
         }
     }
 }

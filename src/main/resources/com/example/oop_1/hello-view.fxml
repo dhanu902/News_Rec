@@ -10,22 +10,23 @@
    <children>
       <StackPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #348954;">
          <children>
-            <Pane fx:id="paneRec" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="paneLogin_I" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <SplitPane dividerPositions="0.20767888307155322" layoutX="13.0" layoutY="14.0" prefHeight="373.0" prefWidth="575.0" style="-fx-background-color: #820495;">
+                  <SplitPane dividerPositions="0.5" layoutX="24.0" layoutY="62.0" prefHeight="277.0" prefWidth="556.0">
                      <items>
-                        <Pane prefHeight="371.0" prefWidth="336.0">
+                        <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #005670;">
                            <children>
-                              <Button layoutX="39.0" layoutY="332.0" mnemonicParsing="false" text="Home" />
+                              <Button fx:id="btnLogin_U" layoutX="101.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnClicks2" text="User Login" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="371.0" prefWidth="438.0" style="-fx-background-color: #8a014f;">
+                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #005670;">
                            <children>
-                              <Button layoutX="386.0" layoutY="326.0" mnemonicParsing="false" text="Next" />
+                              <Button fx:id="btnLogin_A" layoutX="95.0" layoutY="125.0" mnemonicParsing="false" text="Admin Login" />
                            </children>
                         </Pane>
                      </items>
                   </SplitPane>
+                  <Button fx:id="btnBack_L" layoutX="7.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnClicks2" text="Back" />
                </children>
             </Pane>
             <Pane fx:id="paneLnR" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #ffffff;">
@@ -34,7 +35,7 @@
                      <items>
                         <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #005670;">
                            <children>
-                              <Button fx:id="btnLogin_I" layoutX="114.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnClicks1" text="Login" />
+                              <Button fx:id="btnLogin_I" layoutX="114.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnClicks1" stylesheets="@mmm.css" text="Login" />
                            </children>
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #007895;">

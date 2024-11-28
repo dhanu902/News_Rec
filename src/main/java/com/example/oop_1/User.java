@@ -1,5 +1,6 @@
 package com.example.oop_1;
 
+import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.util.List;
@@ -10,10 +11,10 @@ public class User {
     private String email;             // User's email
     private String password;          // User's password (store securely, e.g., hashed)
     private String gender;            // User's gender
-    private List<String> preferences; // User preferences (e.g., categories, topics)
+    private Document preferences; // User preferences (e.g., categories, topics)
 
     // Constructors
-    public User(ObjectId id, String username, String email, String password, String gender, List<String> preferences) {
+    public User(ObjectId id, String username, String email, String password, String gender, Document preferences) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -48,8 +49,8 @@ public class User {
         this.gender = gender;
     }
 
-    public List<String> getPreferences() {return preferences;}
-    public void setPreferences(List<String> preferences) {
+    public Document getPreferences() {return preferences;}
+    public void setPreferences(Document preferences) {
         this.preferences = preferences;
     }
 

@@ -25,19 +25,16 @@ import java.util.ResourceBundle;
 public class UserLogin implements Initializable {
     private MongoDatabase database;
     @FXML
-    private Pane paneLogin;
+    private Pane paneLogin_U;
     @FXML
     private Button btnLogin_F;
     @FXML
-    private Button btnBack_L;
+    private Button btnBack_LU;
 
     @FXML
     private TextField text_nameL;
     @FXML
     private TextField text_passwordL;
-
-    String username;
-    String password;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,17 +55,24 @@ public class UserLogin implements Initializable {
             System.out.println(result);
 
             if (result != null) {
-                username = result.getString("U_Name");
-                password = result.getString("U_Password");
+                User searchUser = new User(
+                        result.getObjectId("_id"),
+                        result.getString("U_Name"),
+                        result.getString("U_Email"),
+                        result.getString("U_Password"),
+                        result.getString("U_Gender"),
+                        result.get("U_Preferences", Document.class)
+                );
 
-                if (pass_PASSword.equals(password)) {
+                if (pass_PASSword.equals(searchUser.getPassword())) {
                     // Successful login
                     try {
                         ((Node) event.getSource()).getScene().getWindow().hide();
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Home-view.fxml"));
                         Parent root = loader.load();
-                        // Home_News controller = loader.getController();
-                        // controller.setName(username);
+                        Home_News controller = loader.getController();
+                        controller.setUser(searchUser);
+                        controller.setDatabase(Connect_DB.getDatabase());
                         Stage ownerStage = new Stage();
                         Scene scene = new Scene(root);
                         ownerStage.setTitle("Home");

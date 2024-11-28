@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="509.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.Home_News">
+<AnchorPane prefHeight="509.0" prefWidth="678.0" stylesheets="@mmm.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.Home_News">
    <children>
       <StackPane prefHeight="509.0" prefWidth="678.0">
          <children>
