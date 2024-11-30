@@ -44,7 +44,7 @@ public class CsvToMongoDB {
 
             while ((line = reader.readNext()) != null) {
                 Document doc = new Document();
-                doc.append("id", id++);
+                doc.append("Article_id", id++);
                 for (int i = 0; i < headers.length; i++) {
                     doc.append(headers[i], line[i]); // Add key-value pairs to the document
                 }

@@ -1,33 +1,22 @@
 package com.example.oop_1;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
-import org.bson.Document;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Home_News {
-    private static final Logger logger = LoggerFactory.getLogger(Home_News.class);
+    //private static final Logger logger = LoggerFactory.getLogger(Home_News.class);
 
-    private MongoDatabase database;
     private User user_name;
     @FXML
     private Button btnBack_H;
@@ -52,7 +41,7 @@ public class Home_News {
     private List<NewsArticle> newsArticles;
 
     public void initialize() {
-        database = Connect_DB.getDatabase();
+        MongoDatabase database = Connect_DB.getDatabase();
         loadArticles();
     }
 
@@ -125,6 +114,43 @@ public class Home_News {
         }
 
     }
+
+    private void resetStarBox(){
+        for (Node node : ratingBox.getChildren()) {
+            if (node instanceof Button btnStar) {
+                btnStar.setText("☆");
+            }
+        }
+    }
+
+    @FXML
+    void btnBack_H_Clicked(ActionEvent event) {
+        try {
+            Node sourceNode = (Node) event.getSource();
+            WindowChangeAction.closeCurrentWindow(sourceNode);
+            WindowChangeAction.showNewStage("Log-view.fxml", "Login");
+        } catch (IOException ex) {
+            WindowChangeAction.showAlert("Loading Failure");
+        }
+    }
+
+    @FXML
+    void btnRec_Clicked(ActionEvent event) {
+        try {
+            Node sourceNode = (Node) event.getSource();
+            WindowChangeAction.closeCurrentWindow(sourceNode);
+            WindowChangeAction.showNewStage("Recommendation-view.fxml", "Recommendations for x");
+        } catch (IOException ex) {
+            WindowChangeAction.showAlert("Loading Failure");
+        }
+    }
+
+
+
+
+
+
+
 
 //    void saveRatingForArticle(int articleId, int rating) {
 //        MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
@@ -212,7 +238,8 @@ public class Home_News {
 //        }
 //    }
 
-    private void SubmitRatingNumb(int rating) {
+    private void SubmitRatingNumb(int rating)
+    {
 //        logger.debug("Rating: {}", rating);
 //        logger.debug("Article ID: {}", articleListView.getSelectionModel().getSelectedIndex() + 1);
 //        logger.debug("User: {}", user_name.getUsername());
@@ -238,35 +265,5 @@ public class Home_News {
 //        if (articleListView.getSelectionModel().getSelectedIndex() >= 0) {
 //            saveRatingForArticle(articleListView.getSelectionModel().getSelectedIndex() + 1, rating);
 //        }
-    }
-
-    private void resetStarBox(){
-        for (Node node : ratingBox.getChildren()) {
-            if (node instanceof Button btnStar) {
-                btnStar.setText("☆");
-            }
-        }
-    }
-
-    @FXML
-    void btnBack_H_Clicked(ActionEvent event) {
-        try {
-            Node sourceNode = (Node) event.getSource();
-            WindowChangeAction.closeCurrentWindow(sourceNode);
-            WindowChangeAction.showNewStage("Log-view.fxml", "Login");
-        } catch (IOException ex) {
-            WindowChangeAction.showAlert("Loading Failure");
-        }
-    }
-
-    @FXML
-    void btnRec_Clicked(ActionEvent event) {
-        try {
-            Node sourceNode = (Node) event.getSource();
-            WindowChangeAction.closeCurrentWindow(sourceNode);
-            WindowChangeAction.showNewStage("Recommendation-view.fxml", "Recommendations for x");
-        } catch (IOException ex) {
-            WindowChangeAction.showAlert("Loading Failure");
-        }
     }
 }

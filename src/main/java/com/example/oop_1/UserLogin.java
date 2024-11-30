@@ -17,12 +17,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserLogin implements Initializable {
+    private static final Logger logger = LoggerFactory.getLogger(UserLogin.class);
     private MongoDatabase database;
     @FXML
     private Pane paneLogin_U;
@@ -55,7 +58,7 @@ public class UserLogin implements Initializable {
             System.out.println(result);
 
             if (result != null) {
-                User searchUser = new User(
+                User searchUser = new ConcreteUser(
                         result.getObjectId("_id"),
                         result.getString("U_Name"),
                         result.getString("U_Email"),
@@ -75,7 +78,7 @@ public class UserLogin implements Initializable {
                         controller.setDatabase(Connect_DB.getDatabase());
                         Stage ownerStage = new Stage();
                         Scene scene = new Scene(root);
-                        ownerStage.setTitle("Home");
+                        ownerStage.setTitle(searchUser.getUsername() + "'s Home");
                         ownerStage.setScene(scene);
                         ownerStage.show();
                     } catch (IOException ex) {

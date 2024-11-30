@@ -9,6 +9,7 @@ module com.example.oop_ {
     requires com.opencsv;
     requires java.desktop;
     requires org.slf4j;
+    requires org.apache.commons.csv;
 
     opens com.example.oop_1 to javafx.fxml, com.google.gson;
     exports com.example.oop_1;

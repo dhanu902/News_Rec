@@ -3,9 +3,8 @@ package com.example.oop_1;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import java.util.List;
 
-public class User {
+public abstract class User {
     private ObjectId id;              // User ID (could be MongoDB ObjectId)
     private String username;          // User's name
     private String email;             // User's email
@@ -23,6 +22,13 @@ public class User {
         this.preferences = preferences;
     }
 
+    public User(String username, String email, String password, String gender) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+    }
+
     // Getters and setters
     public ObjectId getId() {return id;}
     public void setId(ObjectId id) {
@@ -35,24 +41,16 @@ public class User {
     }
 
     public String getEmail() {return email;}
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) {this.email = email;}
 
     public String getPassword() {return password;}
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) {this.password = password;}
 
     public String getGender() {return gender;}
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+    public void setGender(String gender) {this.gender = gender;}
 
     public Document getPreferences() {return preferences;}
-    public void setPreferences(Document preferences) {
-        this.preferences = preferences;
-    }
+    public void setPreferences(Document preferences) {this.preferences = preferences;}
 
     // toString method (for debugging)
     @Override
@@ -66,4 +64,36 @@ public class User {
                 ", preferences=" + preferences +
                 '}';
     }
+
+    // Abstract method: must be implemented by subclasses
+    public abstract void displayInfo();
+
+    // Concrete method: shared functionality
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
+        System.out.println("Password updated successfully.");
+    }
+}
+
+class ConcreteUser extends User {
+        public ConcreteUser(ObjectId id, String username, String email, String password, String gender, Document preferences) {
+            super(id, username, email, password, gender, preferences);
+        }
+        @Override
+        public void setPreferences(Document preferences) {
+            super.setPreferences(preferences);
+        }
+        @Override
+        public void displayInfo() {}
+}
+
+class admin extends User {
+    public admin(int admin_id, String username, String email, String password, String gender) {
+        super(username, email, password, gender);
+    }
+    @Override
+    public void setId(ObjectId id) {
+        super.setId(id);
+    }
+    public void displayInfo() {}
 }

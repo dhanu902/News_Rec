@@ -3,12 +3,10 @@ package com.example.oop_1;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,7 @@ public class PreferencesService {
 
         try {
             // Find the article to get its category
-            Document article = newsArticlesCollection.find(Filters.eq("id", articleId)).first();
+            Document article = newsArticlesCollection.find(Filters.eq("Article_id", articleId)).first();
             if (article == null) {
                 logger.warn("Article not found with ID: {}", articleId);
                 alert("Article not found with ID: " + articleId);
@@ -66,7 +64,7 @@ public class PreferencesService {
 
             boolean articleAlreadyRated = false;
             for (Document ratedArticle : ratedArticles) {
-                if (ratedArticle.getInteger("id").equals(articleId)) {
+                if (ratedArticle.getInteger("Article_id").equals(articleId)) {
                     ratedArticle.put("rating", rating); // Update rating
                     articleAlreadyRated = true;
                     break;
@@ -74,7 +72,7 @@ public class PreferencesService {
             }
 
             if (!articleAlreadyRated) {
-                ratedArticles.add(new Document("id", articleId).append("rating", rating));
+                ratedArticles.add(new Document("User_ID", userId).append("Article_id", articleId).append("rating", rating).append("category", category));
             }
             preferences.put("rated_articles", ratedArticles);
 
@@ -92,8 +90,7 @@ public class PreferencesService {
     }
 
     private void alert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR, message);
-        alert.showAndWait();
+        WindowChangeAction.showAlert(message);
     }
 }
 

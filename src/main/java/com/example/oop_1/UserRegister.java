@@ -13,7 +13,6 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 public class UserRegister {
     MongoClient mongoClient;
@@ -77,6 +76,7 @@ public class UserRegister {
             } catch (IOException ex) {
                 WindowChangeAction.showAlert("Loading Failure");
             }
+
         } catch (NumberFormatException e) {
             Alert message = new Alert(Alert.AlertType.ERROR, "Invalid number format in ID or Phone Number.");
             message.showAndWait();
@@ -107,6 +107,12 @@ public class UserRegister {
                 text_passwordR.getText().isEmpty()) {
             throw new IllegalArgumentException("All fields must be filled.");
         }
+        if (text_nameR.getText().matches("[a-zA-Z ]+")) {
+            throw new IllegalArgumentException("Name must contain only letters.");
+        }
+        if (text_emailR.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            throw new IllegalArgumentException("Email must contain only letters.");
+        }
 
         // Parse inputs
         String Name = text_nameR.getText();
@@ -121,7 +127,7 @@ public class UserRegister {
         // Create a User object
         // ID as String (or you can use ObjectId if required)
         // Preferences initially empty
-        return new User(
+        return new ConcreteUser(
                 null, // ID as String (or you can use ObjectId if required)
                 Name,
                 Email,

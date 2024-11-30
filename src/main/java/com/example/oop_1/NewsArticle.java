@@ -2,25 +2,15 @@ package com.example.oop_1;
 
 public class NewsArticle {
     private int id;
-    private String url;
+    private String link;
     private String headline;
     private String category;
     private String short_description;
     private String authors;
     private String date;
 
-    public NewsArticle(String url, String headline, String category, String short_description, String authors, String date) {
-        this.url = url;
-        this.headline = headline;
-        this.category = category;
-        this.short_description = short_description;
-        this.authors = authors;
-        this.date = date;
-    }
-
-    public NewsArticle(int id, String url, String headline, String category, String short_description, String authors, String date) {
-        this.id = id;
-        this.url = url;
+    public NewsArticle(String link, String headline, String category, String short_description, String authors, String date) {
+        this.link = link;
         this.headline = headline;
         this.category = category;
         this.short_description = short_description;
@@ -33,9 +23,9 @@ public class NewsArticle {
         this.id = id;
     }
 
-    public String getUrl() {return url;}
-    public void setUrl(String url) {
-        this.url = url;
+    public String getUrl() {return link;}
+    public void setUrl(String link) {
+        this.link = link;
     }
 
     public String getCategory() {return category;}

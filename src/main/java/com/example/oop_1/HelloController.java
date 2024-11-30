@@ -68,4 +68,8 @@ public class HelloController {
             paneLnR.toFront();
         }
     }
+
+    public void Exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }

@@ -16,20 +16,20 @@
          <children>
             <Pane fx:id="paneHome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <SplitPane dividerPositions="0.6945898778359512" layoutX="12.0" layoutY="11.0" prefHeight="488.0" prefWidth="658.0" style="-fx-background-color: #820495;">
+                  <SplitPane dividerPositions="0.6946" layoutX="12.0" layoutY="11.0" prefHeight="488.0" prefWidth="658.0" style="-fx-background-color: #820495;">
                      <items>
-                        <Pane prefHeight="371.0" prefWidth="336.0">
+                        <Pane prefHeight="371.0" prefWidth="336.0" style="-fx-background-color: #000000;">
                            <children>
                               <Button fx:id="btnBack_H" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnBack_H_Clicked" text="Back" />
-                              <Label fx:id="titleLabel" layoutX="19.0" layoutY="10.0" prefHeight="36.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER">
+                              <Label fx:id="titleLabel" layoutX="19.0" layoutY="10.0" prefHeight="63.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" wrapText="true">
                                  <font>
                                     <Font name="System Bold Italic" size="16.0" />
                                  </font></Label>
-                              <Label fx:id="descriptionLabel" layoutX="19.0" layoutY="90.0" prefHeight="219.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" />
+                              <Label fx:id="descriptionLabel" layoutX="19.0" layoutY="135.0" prefHeight="174.0" prefWidth="415.0" style="-fx-background-color: #ffffff;" wrapText="true" />
                               <Label fx:id="authorLabel" layoutX="19.0" layoutY="322.0" prefHeight="25.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
                               <Label fx:id="publishedAtLabel" layoutX="19.0" layoutY="358.0" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #ffffff;" />
                               <Label fx:id="urlLabel" layoutX="19.0" layoutY="394.0" prefHeight="25.0" prefWidth="407.0" style="-fx-background-color: #ffffff;" />
-                              <Label fx:id="categoryLabel" layoutX="19.0" layoutY="55.0" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #ffffff;">
+                              <Label fx:id="categoryLabel" layoutX="19.0" layoutY="99.0" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #ffffff;">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -48,7 +48,7 @@
                         <Pane prefHeight="371.0" prefWidth="438.0" style="-fx-background-color: #8a014f;">
                            <children>
                               <Button fx:id="btnRec" layoutX="55.0" layoutY="447.0" mnemonicParsing="false" onAction="#btnRec_Clicked" text="Recommends" />
-                              <ListView fx:id="articleListView" layoutX="32.0" layoutY="14.0" prefHeight="302.0" prefWidth="134.0" />
+                              <ListView fx:id="articleListView" layoutX="11.0" layoutY="14.0" prefHeight="287.0" prefWidth="178.0" stylesheets="@mmm.css" />
                            </children>
                         </Pane>
                      </items>
