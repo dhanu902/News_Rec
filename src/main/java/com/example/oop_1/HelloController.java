@@ -13,6 +13,11 @@ import java.util.Objects;
 
 public class HelloController {
     @FXML
+    private Button btnStart;
+    @FXML
+    private Button btnExit;
+
+    @FXML
     private Button btnLogin_I;
     @FXML
     private Button btnRegister_I;
@@ -21,12 +26,21 @@ public class HelloController {
     @FXML
     private Button btnLogin_A;
     @FXML
-    private Button btnBack_L;
+    private Button btnBack_L_AU;
 
+    @FXML
+    private Pane paneStart;
     @FXML
     private Pane paneLogin_I;
     @FXML
     private Pane paneLnR;
+
+    @FXML
+    public void btnClickStart(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnStart){
+            paneLnR.toFront();
+        }
+    }
 
     @FXML
     public void btnClicks1(ActionEvent actionEvent) {
@@ -49,6 +63,7 @@ public class HelloController {
         }
     }
 
+    @FXML
     public void btnClicks2(ActionEvent actionEvent){
         if (actionEvent.getSource() == btnLogin_U){
             try{
@@ -64,12 +79,15 @@ public class HelloController {
                 message.showAndWait();
             }
         }
-        if (actionEvent.getSource() == btnBack_L){
-            paneLnR.toFront();
+        if (actionEvent.getSource() == btnBack_L_AU){
+            paneStart.toFront();
         }
     }
 
-    public void Exit(ActionEvent actionEvent) {
-        System.exit(0);
+    @FXML
+    public void btnClickExit(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnExit){
+            System.exit(0);
+        }
     }
 }

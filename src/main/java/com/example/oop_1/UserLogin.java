@@ -4,14 +4,13 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.PasswordField;
 import org.bson.Document;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,17 +26,12 @@ import java.util.ResourceBundle;
 public class UserLogin implements Initializable {
     private static final Logger logger = LoggerFactory.getLogger(UserLogin.class);
     private MongoDatabase database;
-    @FXML
-    private Pane paneLogin_U;
-    @FXML
-    private Button btnLogin_F;
-    @FXML
-    private Button btnBack_LU;
 
     @FXML
     private TextField text_nameL;
+
     @FXML
-    private TextField text_passwordL;
+    private PasswordField text_passwordL;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,7 +52,7 @@ public class UserLogin implements Initializable {
             System.out.println(result);
 
             if (result != null) {
-                User searchUser = new ConcreteUser(
+                User searchUser = new ExternalUser(
                         result.getObjectId("_id"),
                         result.getString("U_Name"),
                         result.getString("U_Email"),
@@ -96,7 +90,7 @@ public class UserLogin implements Initializable {
                 message.showAndWait();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error occurred while logging in", e);
             Alert message = new Alert(Alert.AlertType.ERROR, "Error while logging in. Check database connection and fields.");
             message.showAndWait();
         }

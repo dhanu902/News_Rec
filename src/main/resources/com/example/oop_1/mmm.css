@@ -1,23 +1,6 @@
-/* Style for ListView items */
-.list-view {
-    -fx-background-color: #f0f0f0;
-    -fx-control-inner-background: #ffffff;
-    -fx-font-size: 14px;
+#btnStart {
+    -fx-background-color:  #bbf4eb;
 }
-
-/* Style for the article details label */
-.label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #333333;
-}
-
-/* Style for star buttons */
-.star {
-    -fx-font-size: 24px;
-    -fx-text-fill: gray;
-    -fx-cursor: hand;
-}
-
-.star:hover {
-    -fx-text-fill: gold;
+.btnStart:hover{
+    -fx-background-color: #1bb89f;
 }

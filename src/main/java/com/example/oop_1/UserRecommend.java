@@ -31,11 +31,11 @@ public class UserRecommend {
     @FXML
     private TextArea detailsTextArea;
 
-    private User user;
+    private ExternalUser user;
     private MongoDatabase database;
     private ExecutorService executorService;
 
-    public void setUser(User user) {
+    public void setUser(ExternalUser user) {
         this.user = user;
     }
 

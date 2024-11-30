@@ -3,7 +3,6 @@ package com.example.oop_1;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-
 public abstract class User {
     private ObjectId id;              // User ID (could be MongoDB ObjectId)
     private String username;          // User's name
@@ -12,7 +11,7 @@ public abstract class User {
     private String gender;            // User's gender
     private Document preferences; // User preferences (e.g., categories, topics)
 
-    // Constructors
+    // Constructor for User
     public User(ObjectId id, String username, String email, String password, String gender, Document preferences) {
         this.id = id;
         this.username = username;
@@ -22,6 +21,7 @@ public abstract class User {
         this.preferences = preferences;
     }
 
+    // Constructor for Admin
     public User(String username, String email, String password, String gender) {
         this.username = username;
         this.email = email;
@@ -31,14 +31,10 @@ public abstract class User {
 
     // Getters and setters
     public ObjectId getId() {return id;}
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
+    public void setId(ObjectId id) {this.id = id;}
 
     public String getUsername() {return username;}
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) {this.username = username;}
 
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
@@ -52,43 +48,48 @@ public abstract class User {
     public Document getPreferences() {return preferences;}
     public void setPreferences(Document preferences) {this.preferences = preferences;}
 
-    // toString method (for debugging)
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", gender='" + gender + '\'' +
-                ", preferences=" + preferences +
-                '}';
-    }
-
-    // Abstract method: must be implemented by subclasses
+    // Abstract method
     public abstract void displayInfo();
+}
 
-    // Concrete method: shared functionality
-    public void changePassword(String newPassword) {
-        this.password = newPassword;
-        System.out.println("Password updated successfully.");
+class ExternalUser extends User {
+
+    public ExternalUser(ObjectId id, String username, String email, String password, String gender, Document preferences) {
+        super(id, username, email, password, gender, preferences);
+    }
+
+    @Override
+    public void setPreferences(Document preferences) {
+        super.setPreferences(preferences);
+    }
+    @Override
+    public void setId(ObjectId id) {super.setId(id);}
+    @Override
+    public void setUsername(String username) {super.setUsername(username);}
+    @Override
+    public void setEmail(String email) {super.setEmail(email);}
+    @Override
+    public void setPassword(String password) {super.setPassword(password);}
+    @Override
+    public void setGender(String gender) {super.setGender(gender);}
+
+    // for debug
+    @Override
+    public void displayInfo() {
+        System.out.println("User{" +
+                "id='" + getId() + '\'' +
+                ", username='" + getUsername() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", password='" + getPassword() + '\'' +
+                ", gender='" + getGender() + '\'' +
+                ", preferences=" + getPreferences() +
+                '}');
     }
 }
 
-class ConcreteUser extends User {
-        public ConcreteUser(ObjectId id, String username, String email, String password, String gender, Document preferences) {
-            super(id, username, email, password, gender, preferences);
-        }
-        @Override
-        public void setPreferences(Document preferences) {
-            super.setPreferences(preferences);
-        }
-        @Override
-        public void displayInfo() {}
-}
+class Admin extends User {
 
-class admin extends User {
-    public admin(int admin_id, String username, String email, String password, String gender) {
+    public Admin(int admin_id, String username, String email, String password, String gender) {
         super(username, email, password, gender);
     }
     @Override
