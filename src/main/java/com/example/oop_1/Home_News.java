@@ -5,18 +5,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
 
 public class Home_News {
-    //private static final Logger logger = LoggerFactory.getLogger(Home_News.class);
-
     private User user_name;
     @FXML
     private Button btnBack_H;
@@ -38,7 +41,30 @@ public class Home_News {
     @FXML
     private Label publishedAtLabel;
 
+    @FXML
+    private HBox ratingBox;
+    @FXML
+    private Button btnStar1;
+    @FXML
+    private Button btnStar2;
+    @FXML
+    private Button btnStar3;
+    @FXML
+    private Button btnStar4;
+    @FXML
+    private Button btnStar5;
+
     private List<NewsArticle> newsArticles;
+
+    private UserPreferences preferencesService;
+
+    public void setUser(User user) {
+        this.user_name = user;
+    }
+
+    public void setDatabase(MongoDatabase database) {
+        this.preferencesService = new UserPreferences(database);
+    }
 
     public void initialize() {
         MongoDatabase database = Connect_DB.getDatabase();
@@ -70,29 +96,6 @@ public class Home_News {
                 resetStarBox();
             }
         });
-    }
-
-    @FXML
-    private HBox ratingBox;
-    @FXML
-    private Button btnStar1;
-    @FXML
-    private Button btnStar2;
-    @FXML
-    private Button btnStar3;
-    @FXML
-    private Button btnStar4;
-    @FXML
-    private Button btnStar5;
-
-    private PreferencesService preferencesService;
-
-    public void setUser(User user) {
-        this.user_name = user;
-    }
-
-    public void setDatabase(MongoDatabase database) {
-        this.preferencesService = new PreferencesService(database);
     }
 
     @FXML
@@ -137,20 +140,21 @@ public class Home_News {
     @FXML
     void btnRec_Clicked(ActionEvent event) {
         try {
-            Node sourceNode = (Node) event.getSource();
-            WindowChangeAction.closeCurrentWindow(sourceNode);
-            WindowChangeAction.showNewStage("Recommendation-view.fxml", "Recommendations for x");
+            ((Node) event.getSource()).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Recommendation-view.fxml"));
+            Parent root = loader.load();
+            UserRecommend controller = loader.getController();
+            controller.setUserFor_R(user_name);
+            Stage ownerStage = new Stage();
+            Scene scene = new Scene(root);
+            ownerStage.setTitle(user_name.getUsername() + "'s Recommendation");
+            ownerStage.setScene(scene);
+            ownerStage.show();
         } catch (IOException ex) {
-            WindowChangeAction.showAlert("Loading Failure");
+            Alert message = new Alert(Alert.AlertType.ERROR, "Loading Failure");
+            message.showAndWait();
         }
     }
-
-
-
-
-
-
-
 
 //    void saveRatingForArticle(int articleId, int rating) {
 //        MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");

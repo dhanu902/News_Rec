@@ -22,11 +22,10 @@ public abstract class User {
     }
 
     // Constructor for Admin
-    public User(String username, String email, String password, String gender) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.gender = gender;
     }
 
     // Getters and setters
@@ -59,9 +58,7 @@ class ExternalUser extends User {
     }
 
     @Override
-    public void setPreferences(Document preferences) {
-        super.setPreferences(preferences);
-    }
+    public void setPreferences(Document preferences) {super.setPreferences(preferences);}
     @Override
     public void setId(ObjectId id) {super.setId(id);}
     @Override
@@ -88,13 +85,33 @@ class ExternalUser extends User {
 }
 
 class Admin extends User {
+    String admin_id;
 
-    public Admin(int admin_id, String username, String email, String password, String gender) {
-        super(username, email, password, gender);
+    public Admin(String admin_id, String admin_name, String email, String password) {
+        super(admin_name, email, password);
+        this.admin_id = admin_id;
     }
+
+    public String getAdmin_id() {return admin_id;}
+    public void setAdmin_id(String admin_id) {this.admin_id = admin_id;}
+
     @Override
-    public void setId(ObjectId id) {
-        super.setId(id);
+    public void setEmail(String email) {super.setEmail(email);}
+    @Override
+    public void setPassword(String password) {super.setPassword(password);}
+    @Override
+    public void setUsername(String admin_name) {super.setUsername(admin_name);}
+
+    // for debug
+    @Override
+    public void displayInfo() {
+        System.out.println("Admin{" +
+                "id='" + getId() + '\'' +
+                ", a.name='" + getUsername() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", password='" + getPassword() + '\'' +
+                ", gender='" + getGender() + '\'' +
+                ", preferences=" + getPreferences() +
+                '}');
     }
-    public void displayInfo() {}
 }

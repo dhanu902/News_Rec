@@ -25,7 +25,7 @@
                         </Pane>
                         <Pane prefHeight="371.0" prefWidth="438.0" style="-fx-background-color: #8a014f;">
                            <children>
-                              <TextArea fx:id="detailsTextArea" layoutX="27.0" layoutY="27.0" prefHeight="423.0" prefWidth="392.0" wrapText="true" />
+                              <TextArea fx:id="TextAreaContent" layoutX="27.0" layoutY="27.0" prefHeight="423.0" prefWidth="392.0" wrapText="true" />
                            </children>
                         </Pane>
                      </items>

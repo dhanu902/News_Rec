@@ -12,30 +12,26 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.UserLogin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.AdminLogin">
    <children>
       <StackPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Pane fx:id="paneLogin_U" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #054950; -fx-border-color: #ffffff; -fx-border-radius: 10px; -fx-border-width: 2px;">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #054950; -fx-border-color: #ffffff; -fx-border-radius: 10px; -fx-border-width: 2px;">
                <children>
-                  <ImageView fitHeight="400.0" fitWidth="324.0" layoutX="306.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/logF.jpg" />
-                     </image>
-                  </ImageView>
                   <SplitPane dividerPositions="0.2015" layoutX="24.0" layoutY="65.0" prefHeight="275.0" prefWidth="556.0" style="-fx-border-color: #000000; -fx-border-width: 4;">
                      <items>
                         <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #006585;">
                            <children>
-                              <Button fx:id="btnLogin_F" layoutX="12.0" layoutY="215.0" mnemonicParsing="false" onAction="#Login_F" prefHeight="32.0" prefWidth="83.0" text="Sign in">
+                              <Button layoutX="12.0" layoutY="215.0" mnemonicParsing="false" onAction="#Login_Admin" prefHeight="32.0" prefWidth="83.0" text="Sign in">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
-                                 </font></Button>
+                                 </font>
+                              </Button>
                            </children>
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #006585;">
                            <children>
-                              <Label layoutX="29.0" layoutY="120.0" text="User Name" textFill="WHITE">
+                              <Label layoutX="29.0" layoutY="120.0" text="Admin Name" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
@@ -48,7 +44,7 @@
                               <TextField fx:id="text_nameL" layoutX="145.0" layoutY="120.0" prefHeight="25.0" prefWidth="274.0" />
                               <ImageView fitHeight="93.0" fitWidth="107.0" layoutX="163.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@img/user.jpg" />
+                                    <Image url="@img/Admin.jpg" />
                                  </image>
                               </ImageView>
                               <PasswordField fx:id="text_passwordL" layoutX="145.0" layoutY="180.0" prefHeight="25.0" prefWidth="274.0" />
@@ -61,7 +57,7 @@
                         <Font name="System Bold Italic" size="41.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnBack_LU" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#btnBack_L_Clicked" prefHeight="32.0" prefWidth="71.0" text="Back">
+                  <Button layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#btnBack_LA_Clicked" prefHeight="32.0" prefWidth="71.0" text="Back">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

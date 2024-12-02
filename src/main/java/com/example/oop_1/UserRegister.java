@@ -105,7 +105,11 @@ public class UserRegister {
         }
     }
 
-    private static User getUser(TextField text_nameR, TextField text_emailR, TextField text_passwordR, RadioButton radioB_M, RadioButton radioB_F) {
+    private static User getUser(TextField text_nameR,
+                                TextField text_emailR,
+                                TextField text_passwordR,
+                                RadioButton radioB_M,
+                                RadioButton radioB_F) {
         if (text_nameR.getText().isEmpty() ||
                 text_emailR.getText().isEmpty() ||
                 text_passwordR.getText().isEmpty() ) {

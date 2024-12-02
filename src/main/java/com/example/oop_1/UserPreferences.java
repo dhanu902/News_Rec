@@ -11,16 +11,16 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PreferencesService {
-    private static final Logger logger = LoggerFactory.getLogger(PreferencesService.class);
+public class UserPreferences {
+    private static final Logger logger = LoggerFactory.getLogger(UserPreferences.class);
     private final MongoDatabase database;
 
-    public PreferencesService(MongoDatabase database) {
+    public UserPreferences(MongoDatabase database) {
         this.database = database;
     }
 
     public void saveRatingForArticle(ObjectId userId, int articleId, int rating) {
-        MongoCollection<Document> preferencesCollection = database.getCollection("User preferences");
+        MongoCollection<Document> pref_Collection = database.getCollection("User preferences");
         MongoCollection<Document> newsArticlesCollection = database.getCollection("News_Articles");
 
         try {
@@ -35,10 +35,10 @@ public class PreferencesService {
             String category = article.getString("Category");
 
             // Fetch or create the preferences document for the user
-            Document preferences = preferencesCollection.find(Filters.eq("_id", userId)).first();
+            Document preferences = pref_Collection.find(Filters.eq("_id", userId)).first();
             if (preferences == null) {
                 preferences = new Document("_id", userId);
-                preferencesCollection.insertOne(preferences);
+                pref_Collection.insertOne(preferences);
             }
 
             Document categories = preferences.get("categories", Document.class);
@@ -77,7 +77,7 @@ public class PreferencesService {
             preferences.put("rated_articles", ratedArticles);
 
             // Update preferences in DB
-            preferencesCollection.updateOne(
+            pref_Collection.updateOne(
                     Filters.eq("_id", userId),
                     new Document("$set", preferences)
             );

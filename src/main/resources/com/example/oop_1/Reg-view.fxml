@@ -21,7 +21,7 @@
                <children>
                   <ImageView fitHeight="408.0" fitWidth="294.0" layoutX="307.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logF.jpg" />
+                        <Image url="@img/logF.jpg" />
                      </image>
                   </ImageView>
                   <SplitPane dividerPositions="0.7985347985347986" layoutX="24.0" layoutY="66.0" prefHeight="273.0" prefWidth="556.0" style="-fx-border-color: #000000; -fx-border-width: 4;">

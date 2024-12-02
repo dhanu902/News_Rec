@@ -2,25 +2,28 @@ package com.example.oop_1;
 
 import com.google.gson.Gson;
 import com.opencsv.CSVWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NdjsonToCsvConverter {
+public class jsonToCSV {
+    private static final Logger logger = LoggerFactory.getLogger(jsonToCSV.class);
 
     public static void main(String[] args) {
         // File paths
-        String jsonFilePath = "News_Category_Dataset_v3.json"; // Input NDJSON file
+        String jsonFilePath = "News_Category_Dataset_v3.json"; // Input JSON file
         String csvFilePath = "Book1.csv";    // Output CSV file
 
         // Read JSON and write to CSV
-        List<NewsArticle> articles = readNdjsonFile(jsonFilePath);
-        writeCsvFile(articles, csvFilePath);
+        List<NewsArticle> articles = read_jsonFile(jsonFilePath);
+        writeCSV_File(articles, csvFilePath);
     }
 
     // Method to read NDJSON file and parse it into a list of Article objects
-    public static List<NewsArticle> readNdjsonFile(String filePath) {
+    public static List<NewsArticle> read_jsonFile(String filePath) {
         List<NewsArticle> articles = new ArrayList<>();
         Gson gson = new Gson();
 
@@ -32,14 +35,14 @@ public class NdjsonToCsvConverter {
                 articles.add(article);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         return articles;
     }
 
     // Method to write a list of Article objects to a CSV file
-    public static void writeCsvFile(List<NewsArticle> articles, String csvFilePath) {
+    public static void writeCSV_File(List<NewsArticle> articles, String csvFilePath) {
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvFilePath))) {
 
             // Write header row
@@ -61,7 +64,7 @@ public class NdjsonToCsvConverter {
 
             System.out.println("CSV file written successfully to: " + csvFilePath);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

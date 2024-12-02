@@ -25,7 +25,7 @@
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #005670;">
                            <children>
-                              <Button fx:id="btnLogin_A" layoutX="95.0" layoutY="125.0" mnemonicParsing="false" text="Admin Login" />
+                              <Button fx:id="btnLogin_A" layoutX="95.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnClicks2" text="Admin Login" />
                            </children>
                         </Pane>
                      </items>
@@ -34,35 +34,6 @@
                   <Label layoutX="12.0" layoutY="3.0" prefHeight="57.0" prefWidth="269.0" text="InsightFeed" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="System Bold" size="41.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="paneStart" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #004953; -fx-border-color: #ffffff; -fx-border-radius: 10px;">
-               <children>
-                  <ImageView fitHeight="400.0" fitWidth="362.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@hom.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="346.0" layoutY="6.0" prefHeight="195.0" prefWidth="234.0" text="WELCOME to InsightFeed" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="41.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btnStart" layoutX="398.0" layoutY="304.0" mnemonicParsing="false" onAction="#btnClickStart" prefHeight="42.0" prefWidth="130.0" style="-fx-border-radius: 100px; -fx-border-color: #000000; -fx-background-color: #bbf4eb;" stylesheets="@mmm.css" text="Start NOW">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnExit" layoutX="553.0" layoutY="368.0" mnemonicParsing="false" onAction="#btnClickExit" text="EXIT">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="346.0" layoutY="193.0" prefHeight="113.0" prefWidth="234.0" text="&quot;Get personalized news recommendations tailored just for you, with articles that match your interests and preferences&quot;" textAlignment="CENTER" textFill="#ffa100" wrapText="true">
-                     <font>
-                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -94,7 +65,7 @@
                               </Label>
                               <ImageView fitHeight="224.0" fitWidth="160.0" layoutX="130.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@log1.jpg" />
+                                    <Image url="@img/log1.jpg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -107,7 +78,7 @@
                                  </font></Button>
                               <ImageView fitHeight="224.0" fitWidth="151.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@rg1.jpg" />
+                                    <Image url="@img/rg1.jpg" />
                                  </image>
                               </ImageView>
                               <Label layoutX="145.0" layoutY="-9.0" prefHeight="195.0" prefWidth="121.0" text="&quot;Create your own account and discover news that matters to you&quot;" textAlignment="RIGHT" textFill="#ffa100" wrapText="true">
@@ -122,6 +93,35 @@
                   <Label layoutX="14.0" layoutY="-9.0" prefHeight="71.0" prefWidth="456.0" text="InsightFeed" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="System Bold" size="41.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneStart" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #004953; -fx-border-color: #ffffff; -fx-border-radius: 10px;">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="362.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/hom.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="346.0" layoutY="6.0" prefHeight="195.0" prefWidth="234.0" text="WELCOME to InsightFeed" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="41.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnStart" layoutX="398.0" layoutY="304.0" mnemonicParsing="false" onAction="#btnClickStart" prefHeight="42.0" prefWidth="130.0" style="-fx-border-radius: 100px; -fx-border-color: #000000; -fx-background-color: #bbf4eb;" stylesheets="@mmm.css" text="Start NOW">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnExit" layoutX="553.0" layoutY="368.0" mnemonicParsing="false" onAction="#btnClickExit" text="EXIT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="346.0" layoutY="193.0" prefHeight="113.0" prefWidth="234.0" text="&quot;Get personalized news recommendations tailored just for you, with articles that match your interests and preferences&quot;" textAlignment="CENTER" textFill="#ffa100" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
                </children>

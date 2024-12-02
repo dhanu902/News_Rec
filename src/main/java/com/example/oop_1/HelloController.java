@@ -79,6 +79,15 @@ public class HelloController {
                 message.showAndWait();
             }
         }
+        if (actionEvent.getSource() == btnLogin_A){
+            try {
+                Node sourceNode = (Node) actionEvent.getSource();
+                WindowChangeAction.closeCurrentWindow(sourceNode);
+                WindowChangeAction.showNewStage("AdminHome-view.fxml", "Admin Login");
+            } catch (IOException ex) {
+                WindowChangeAction.showAlert("Loading Failure");
+            }
+        }
         if (actionEvent.getSource() == btnBack_L_AU){
             paneStart.toFront();
         }
