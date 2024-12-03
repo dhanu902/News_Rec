@@ -14,42 +14,18 @@
    <children>
       <StackPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Pane fx:id="paneLogin_I" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #054950; -fx-border-radius: 10px; -fx-border-color: #ffffff;">
-               <children>
-                  <SplitPane dividerPositions="0.5" layoutX="24.0" layoutY="62.0" prefHeight="277.0" prefWidth="556.0">
-                     <items>
-                        <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #005670;">
-                           <children>
-                              <Button fx:id="btnLogin_U" layoutX="101.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnClicks2" text="User Login" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #005670;">
-                           <children>
-                              <Button fx:id="btnLogin_A" layoutX="95.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnClicks2" text="Admin Login" />
-                           </children>
-                        </Pane>
-                     </items>
-                  </SplitPane>
-                  <Button fx:id="btnBack_L_AU" layoutX="7.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnClicks2" text="Back" />
-                  <Label layoutX="12.0" layoutY="3.0" prefHeight="57.0" prefWidth="269.0" text="InsightFeed" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="41.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
             <Pane fx:id="paneLnR" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #054950; -fx-border-color: #ffffff; -fx-border-radius: 10px; -fx-border-width: 2px;">
                <children>
                   <ImageView fitHeight="400.0" fitWidth="298.0" layoutX="306.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logF.jpg" />
+                        <Image url="@img/logF.jpg" />
                      </image>
                   </ImageView>
                   <SplitPane dividerPositions="0.5" layoutX="24.0" layoutY="62.0" prefHeight="277.0" prefWidth="556.0" style="-fx-border-color: #000000; -fx-border-width: 4px; -fx-background-color: #000000;">
                      <items>
                         <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #006585;">
                            <children>
-                              <Button fx:id="btnLogin_I" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnClicks1" prefHeight="25.0" prefWidth="96.0" stylesheets="@mmm.css" text="Sign in">
+                              <Button fx:id="btnLogin_I" layoutX="4.0" layoutY="204.0" mnemonicParsing="false" onAction="#btnClicks1" prefHeight="49.0" prefWidth="105.0" style="-fx-background-radius: 100px; -fx-background-color: #f5f5dc; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-border-radius: 100px;" text="Sign in">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font></Button>
@@ -63,7 +39,7 @@
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="224.0" fitWidth="160.0" layoutX="130.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="224.0" fitWidth="165.0" layoutX="118.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/log1.jpg" />
                                  </image>
@@ -72,11 +48,11 @@
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #007895;">
                            <children>
-                              <Button fx:id="btnRegister_I" layoutX="151.0" layoutY="189.0" mnemonicParsing="false" onAction="#btnClicks1" prefHeight="45.0" prefWidth="115.0" text="Register">
+                              <Button fx:id="btnRegister_I" layoutX="154.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnClicks1" prefHeight="49.0" prefWidth="115.0" style="-fx-background-radius: 100px; -fx-background-color: #f5f5dc; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-border-radius: 100px;" text="Register">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font></Button>
-                              <ImageView fitHeight="224.0" fitWidth="151.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="224.0" fitWidth="165.0" layoutX="-7.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/rg1.jpg" />
                                  </image>
@@ -90,11 +66,69 @@
                         </Pane>
                      </items>
                   </SplitPane>
-                  <Label layoutX="14.0" layoutY="-9.0" prefHeight="71.0" prefWidth="456.0" text="InsightFeed" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Label layoutX="54.0" layoutY="-5.0" prefHeight="71.0" prefWidth="456.0" text="InsightFeed" textAlignment="CENTER" textFill="WHITE" underline="true" wrapText="true">
                      <font>
-                        <Font name="System Bold" size="41.0" />
+                        <Font name="System Bold Italic" size="41.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="49.0" fitWidth="47.0" layoutX="5.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/newspaper.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="paneLogin_I" prefHeight="400.0" prefWidth="531.0" style="-fx-background-color: #054950; -fx-border-radius: 10px; -fx-border-color: #ffffff;">
+               <children>
+                  <ImageView fitHeight="415.0" fitWidth="294.0" layoutX="306.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logF.jpg" />
+                     </image>
+                  </ImageView>
+                  <SplitPane dividerPositions="0.6425992779783394" layoutX="24.0" layoutY="62.0" prefHeight="277.0" prefWidth="556.0">
+                     <items>
+                        <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #005670;">
+                           <children>
+                              <Button fx:id="btnLogin_U" layoutX="86.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnClicks2" prefHeight="34.0" prefWidth="181.0" style="-fx-background-color: #64cdaf; -fx-background-radius: 400px; -fx-border-radius: 400px; -fx-border-color: #ffffff;" text="User Login">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font></Button>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #005670;">
+                           <children>
+                              <Button fx:id="btnLogin_A" layoutX="24.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnClicks2" style="-fx-background-color: #64cdaf; -fx-background-radius: 500px; -fx-border-radius: 500px; -fx-border-color: #ffffff;" text="Admin Login">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font></Button>
+                              <Label layoutX="14.0" layoutY="14.0" text="Only for Admins" textFill="#fffff4">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="129.0" fitWidth="115.0" layoutX="40.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/Admin.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </items>
+                  </SplitPane>
+                  <Button fx:id="btnBack_L_AU" layoutX="7.0" layoutY="350.0" mnemonicParsing="false" onAction="#btnClicks2" prefHeight="42.0" prefWidth="73.0" style="-fx-background-radius: 500px; -fx-background-color: #ffffff;" text="Back">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font></Button>
+                  <Label layoutX="54.0" layoutY="-1.0" prefHeight="57.0" prefWidth="269.0" text="InsightFeed" textAlignment="CENTER" textFill="WHITE" underline="true" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="41.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="49.0" fitWidth="47.0" layoutX="4.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/newspaper.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="paneStart" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #004953; -fx-border-color: #ffffff; -fx-border-radius: 10px;">
@@ -109,12 +143,12 @@
                         <Font name="System Bold" size="41.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnStart" layoutX="398.0" layoutY="304.0" mnemonicParsing="false" onAction="#btnClickStart" prefHeight="42.0" prefWidth="130.0" style="-fx-border-radius: 100px; -fx-border-color: #000000; -fx-background-color: #bbf4eb;" stylesheets="@mmm.css" text="Start NOW">
+                  <Button fx:id="btnStart" layoutX="398.0" layoutY="306.0" mnemonicParsing="false" onAction="#btnClickStart" prefHeight="42.0" prefWidth="130.0" style="-fx-border-radius: 100px; -fx-border-color: #000000; -fx-background-color: #bbf4eb; -fx-background-radius: 100px;" text="Start NOW">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnExit" layoutX="553.0" layoutY="368.0" mnemonicParsing="false" onAction="#btnClickExit" text="EXIT">
+                  <Button fx:id="btnExit" layoutX="536.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClickExit" prefHeight="34.0" prefWidth="58.0" style="-fx-background-color: #ffffff; -fx-background-radius: 200px;" text="EXIT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

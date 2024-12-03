@@ -83,9 +83,10 @@ public class HelloController {
             try {
                 Node sourceNode = (Node) actionEvent.getSource();
                 WindowChangeAction.closeCurrentWindow(sourceNode);
-                WindowChangeAction.showNewStage("AdminHome-view.fxml", "Admin Login");
+                WindowChangeAction.showNewStage("LogAdmin-view.fxml", "Admin Login");
             } catch (IOException ex) {
                 WindowChangeAction.showAlert("Loading Failure");
+                ex.printStackTrace();
             }
         }
         if (actionEvent.getSource() == btnBack_L_AU){

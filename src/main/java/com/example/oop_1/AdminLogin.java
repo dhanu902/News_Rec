@@ -43,16 +43,20 @@ public class AdminLogin implements Initializable {
         try {
             MongoCollection<Document> collection = database.getCollection("Admins");
 
-            Document result = collection.find(Filters.eq("A_Name", pass_ADMINname)).first();
+            Document adminDoc = collection.find(new Document("A_Name", pass_ADMINname)).first();
             //Document result = collection.find(query).first();
 
-            if (result != null) {
+            if (adminDoc != null) {
                 User searchUser = new Admin(
-                        result.getString("A_ID"),
-                        result.getString("A_Name"),
-                        result.getString("A_Password"),
-                        result.getString("A_Email")
+                        adminDoc.getString("A_ID"),
+                        adminDoc.getString("A_Name"),
+                        adminDoc.getString("A_Email"),
+                        adminDoc.getString("A_Password")
+
                 );
+
+
+                System.out.println(pass_PASSword + searchUser.getPassword() + "\n" + adminDoc.toJson());
 
                 if (pass_PASSword.equals(searchUser.getPassword())) {
                     // Successful login

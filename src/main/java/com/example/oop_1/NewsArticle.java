@@ -17,6 +17,15 @@ public class NewsArticle {
         this.authors = authors;
         this.date = date;
     }
+    public NewsArticle(int id, String link, String headline, String category, String short_description, String authors, String date) {
+        this.id = id;
+        this.link = link;
+        this.headline = headline;
+        this.category = category;
+        this.short_description = short_description;
+        this.authors = authors;
+        this.date = date;
+    }
 
     public int getId() {return id;}
     public void setId(int id) {
