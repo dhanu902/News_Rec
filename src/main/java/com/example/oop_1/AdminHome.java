@@ -187,7 +187,7 @@ public class AdminHome {
     public void btnUpload(){
         String link = text_urlA.getText();
         String headline = text_titleA.getText();
-        String category = text_categoryA.getText();
+        String category = text_categoryA.getText().toUpperCase();
         String short_description = text_shortDescriptionA.getText();
         String authors = text_authorA.getText();
         String date = text_dateA.getText();

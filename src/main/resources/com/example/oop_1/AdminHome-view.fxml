@@ -13,6 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.AdminHome">
@@ -31,21 +34,6 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <SplitPane fx:id="splitPane1" dividerPositions="0.34065934065934067" layoutX="24.0" layoutY="65.0" prefHeight="275.0" prefWidth="556.0" style="-fx-border-color: #000000; -fx-border-width: 4;">
-                     <items>
-                        <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #000000;">
-                           <children>
-                            <Button fx:id="btnMNG_Article" layoutX="41.0" layoutY="215.0" mnemonicParsing="false" onAction="#btnClicks1" text="MANAGE ARTIVLE" />
-                              <ImageView fitHeight="140.0" fitWidth="142.0" layoutX="22.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/amin.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #006585;" />
-                     </items>
-                  </SplitPane>
                   <SplitPane fx:id="splitPane2" dividerPositions="0.34065934065934067" layoutX="24.0" layoutY="65.0" prefHeight="275.0" prefWidth="556.0" style="-fx-border-color: #000000; -fx-border-width: 4;">
                      <items>
                         <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #000000;">
@@ -317,6 +305,54 @@
                         <Image url="@img/newspaper.png" />
                      </image>
                   </ImageView>
+                  <SplitPane fx:id="splitPane1" dividerPositions="0.34065934065934067" layoutX="24.0" layoutY="65.0" prefHeight="275.0" prefWidth="556.0" style="-fx-border-color: #000000; -fx-border-width: 4;">
+                     <items>
+                        <Pane prefHeight="275.0" prefWidth="271.0" style="-fx-background-color: #000000;">
+                           <children>
+                            <Button fx:id="btnMNG_Article" layoutX="7.0" layoutY="196.0" mnemonicParsing="false" onAction="#btnClicks1" style="-fx-background-color: #00cec8; -fx-border-color: #ffffff; -fx-background-radius: 400px; -fx-border-radius: 400px;" text="MANAGE ARTICLES">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="140.0" fitWidth="142.0" layoutX="22.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/amin.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #006585;">
+                           <children>
+                              <Label layoutX="49.0" prefHeight="244.0" prefWidth="259.0" text="WELCOME Administrator profile" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold Italic" size="39.0" />
+                                 </font>
+                                 <textFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.7282493114471436" green="0.8700000047683716" blue="0.26969999074935913" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="0.006711409395973154">
+                                             <color>
+                                                <Color red="0.7282493114471436" green="0.8700000047683716" blue="0.26969999074935913" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </items>
+                  </SplitPane>
                </children>
             </Pane>
          </children>

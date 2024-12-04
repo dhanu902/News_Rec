@@ -4,10 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="509.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_1.Home_News">
@@ -83,6 +88,32 @@
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Label>
+                              <Label layoutX="111.0" layoutY="-3.0" text="NEWS ARTICLES" underline="true">
+                                 <font>
+                                    <Font name="System Bold Italic" size="35.0" />
+                                 </font>
+                                 <textFill>
+                                    <RadialGradient centerX="0.5192837465564738" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.03999999910593033" green="0.9313850998878479" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </textFill>
+                              </Label>
+                              <ImageView fitHeight="44.0" fitWidth="41.0" layoutX="66.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/newspaper.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </Pane>
                         <Pane prefHeight="371.0" prefWidth="438.0" style="-fx-background-color: #006585;">

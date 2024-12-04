@@ -73,7 +73,7 @@ public class AdminLogin implements Initializable {
                 }
             } else {
                 // User not found
-                Alert message = new Alert(Alert.AlertType.ERROR, "User not found");
+                Alert message = new Alert(Alert.AlertType.ERROR, "Admin not found");
                 message.showAndWait();
             }
         } catch (Exception e) {

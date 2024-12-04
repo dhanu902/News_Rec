@@ -46,6 +46,12 @@ public class ContentBasedRecommendationEngine implements RecommendationEngine {
 
             // Extract the rated_articles array
             List<Document> ratedArticles = (List<Document>) userRatings.get("rated_articles");
+
+            // Extract IDs of rated articles
+            List<Integer> ratedArticleIds = ratedArticles.stream()
+                    .map(article -> article.getInteger("Article_id"))
+                    .toList() ; new ArrayList<>();
+
             if (ratedArticles == null || ratedArticles.isEmpty()) {
                 System.out.println("No rated articles found for user: " + userId);
                 Platform.runLater(() -> {
@@ -54,11 +60,6 @@ public class ContentBasedRecommendationEngine implements RecommendationEngine {
                 });
                 return;
             }
-
-            // Extract IDs of rated articles
-            List<Integer> ratedArticleIds = ratedArticles.stream()
-                    .map(article -> article.getInteger("Article_id"))
-                    .toList();
 
             // Extract user's preferred categories
             Document categories = (Document) userRatings.get("categories");
@@ -71,30 +72,30 @@ public class ContentBasedRecommendationEngine implements RecommendationEngine {
                 return;
             }
 
-            // Sort categories by ratings in descending order and filter top-rated ones
-            List<String> preferredCategories = categories.entrySet().stream()
-                    .sorted((entry1, entry2) -> Double.compare((Double) entry2.getValue(), (Double) entry1.getValue())) // Sort by value (descending)
-                    .limit(3) // Limit to top 3 categories (adjustable)
-                    .map(Map.Entry::getKey)
+            List<Map.Entry<String, Double>> sortedCategories = categories.entrySet().stream()
+                    .map(entry -> Map.entry(entry.getKey(), (Double) entry.getValue()))
+                    .sorted((a, b) -> Double.compare(b.getValue(), a.getValue())) // Sort by preference score
                     .toList();
 
-            if (preferredCategories.isEmpty()) {
-                System.out.println("No top-rated categories for user: " + userId);
-                Platform.runLater(() -> {
-                    articlesListView.getItems().clear();
-                    articlesListView.getItems().add("No top-rated categories found for this user.");
-                });
-                return;
+            System.out.println("Sorted Categories by Preference: " + sortedCategories);
+
+            List<Document> recommendedArticles = new ArrayList<>();
+            int maxRecommendations = 15; // Total number of recommendations
+            int articlesPerCategory = 5; // Max articles per category
+
+            for (Map.Entry<String, Double> categoryEntry : sortedCategories) {
+                if (recommendedArticles.size() >= maxRecommendations) break;
+
+                String category = categoryEntry.getKey();
+                List<Document> articles = articlesCollection.find(
+                        new Document("Category", category)
+                                .append("Article_id", new Document("$nin", ratedArticleIds))
+                ).limit(articlesPerCategory).into(new ArrayList<>());
+
+                recommendedArticles.addAll(articles);
             }
 
-            System.out.println("Preferred categories for user: " + preferredCategories);
-
-            // Fetch articles from preferred categories, excluding rated ones
-            List<Document> recommendedArticles = articlesCollection.find(
-                    new Document("Category", new Document("$in", preferredCategories)) // Match categories
-                            .append("Article_id", new Document("$nin", ratedArticleIds)) // Exclude rated articles
-            ).limit(15).into(new ArrayList<>()); // Limit recommendations to 5
-
+            // Display recommendations
             if (recommendedArticles.isEmpty()) {
                 System.out.println("No articles found for preferred categories.");
                 Platform.runLater(() -> {
@@ -104,11 +105,12 @@ public class ContentBasedRecommendationEngine implements RecommendationEngine {
                 return;
             }
 
-            // Update the ListView with recommendations
+            System.out.println("Final Recommended Articles: " + recommendedArticles);
+
             Platform.runLater(() -> {
                 articlesListView.getItems().clear();
                 for (Document article : recommendedArticles) {
-                    articlesListView.getItems().add(article.getString("Headline")); // Display the headline
+                    articlesListView.getItems().add(article.getString("Headline")); // Adjust based on your schema
                 }
             });
         });

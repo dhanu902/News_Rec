@@ -5,10 +5,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import org.bson.Document;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -28,6 +25,8 @@ public class UserRecommend {
     private ListView<String> articleListView2;
     @FXML
     private TextArea TextAreaContent;
+    @FXML
+    private Label CategoryLbl;
 
     private RecommendationEngine recommendationEngine;
     MongoDatabase database1;
@@ -61,7 +60,7 @@ public class UserRecommend {
                 MongoCollection<Document> articlesCollection = database1.getCollection("News_Articles");
                 Document article = articlesCollection.find(Filters.eq("Headline", headline)).first();
                 if (article != null) {
-                    String details = String.format("Link: %s\n Headline: %s\nCategory: %s\nDescription: %s\n Author: %s\n Date:%s",
+                    String details = String.format("Link: %s\n \n Headline: %s\n \n Category: %s\n \n Description: %s\n \n Author: %s\n \n Date:%s",
                             article.getString("Link"),
                             article.getString("Headline"),
                             article.getString("Category"),
@@ -69,6 +68,7 @@ public class UserRecommend {
                             article.getString("Author"),
                             article.getString("Date"));
                     Platform.runLater(() -> TextAreaContent.setText(details));
+                    Platform.runLater(() -> CategoryLbl.setText(article.getString("Category")));
                 }
             } catch (Exception e) {
                 Platform.runLater(() -> TextAreaContent.setText("Error loading article details: " + e.getMessage()));
