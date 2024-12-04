@@ -88,10 +88,6 @@ public class UserRegister {
             Alert message = new Alert(Alert.AlertType.ERROR, "Data entry failed: " + e.getMessage());
             message.showAndWait();
         }
-//        if (!text_tel.getText().matches("\\d{10}")) {
-//            Alert message = new Alert(Alert.AlertType.ERROR, "Telephone number must contain only numbers.");
-//            message.showAndWait();
-//        }
     }
 
     @FXML
@@ -126,7 +122,7 @@ public class UserRegister {
         }
 
         // Parse inputs
-        String Name = text_nameR.getText();
+        String Name = text_nameR.getText().toLowerCase();
         String Email = text_emailR.getText();
         String Password = text_passwordR.getText();
         String Gender = radioB_M.isSelected() ? radioB_M.getText() : radioB_F.isSelected() ? radioB_F.getText() : null;

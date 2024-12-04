@@ -70,6 +70,8 @@ public class UserLogin implements Initializable {
                         Home_News controller = loader.getController();
                         controller.setUser(searchUser);
                         controller.setDatabase(Connect_DB.getDatabase());
+                        Alert message = new Alert(Alert.AlertType.CONFIRMATION, "Successfully logged as: "+searchUser.getUsername());
+                        message.showAndWait();
                         Stage ownerStage = new Stage();
                         Scene scene = new Scene(root);
                         ownerStage.setTitle(searchUser.getUsername() + "'s Home");
@@ -106,5 +108,4 @@ public class UserLogin implements Initializable {
             WindowChangeAction.showAlert("Loading Failure");
         }
     }
-
 }

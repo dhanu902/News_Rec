@@ -8,10 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.util.Objects;
 
 public class HelloController {
+    private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
+
     @FXML
     private Button btnStart;
     @FXML
@@ -86,7 +91,7 @@ public class HelloController {
                 WindowChangeAction.showNewStage("LogAdmin-view.fxml", "Admin Login");
             } catch (IOException ex) {
                 WindowChangeAction.showAlert("Loading Failure");
-                ex.printStackTrace();
+                logger.error(ex.getMessage());
             }
         }
         if (actionEvent.getSource() == btnBack_L_AU){

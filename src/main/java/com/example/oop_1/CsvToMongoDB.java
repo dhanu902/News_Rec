@@ -73,6 +73,7 @@ public class CsvToMongoDB {
 
 
 class ToMongoDB {
+    private static final System.Logger logger = System.getLogger(ToMongoDB.class.getName());
     public static void main(String[] args) {
         // MongoDB connection URI
         String uri = "mongodb://localhost:27017";
@@ -110,7 +111,7 @@ class ToMongoDB {
                 System.out.println("No data to insert.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(System.Logger.Level.ERROR, e);
         }
     }
 }
