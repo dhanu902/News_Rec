@@ -69,7 +69,7 @@ public class UserRegister {
             System.out.println("_id: "+ USER_doc.getObjectId("_id").toString());
 
             // Open login
-            Alert message = new Alert(Alert.AlertType.INFORMATION, "Submitted Successfully");
+            Alert message = new Alert(Alert.AlertType.CONFIRMATION, "Submitted Successfully");
             message.showAndWait();
             try {
                 Node sourceNode = (Node) event.getSource();

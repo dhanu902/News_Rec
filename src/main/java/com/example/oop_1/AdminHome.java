@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class AdminHome {
     private static final Logger logger = LoggerFactory.getLogger(AdminHome.class);
@@ -325,29 +326,95 @@ public class AdminHome {
         // Query the MongoDB collection
         MongoCollection<Document> collection = database.getCollection("News_Articles");
         System.out.println("Database:" + database.getName() + "\nCollection:" + collection.getNamespace() );
-        Bson query = Filters.or(Filters.eq("Article_id", Integer.parseInt(searchText)),
-                Filters.regex("Headline", searchText, "i"),
-                Filters.regex("Category", searchText, "i"));
 
-        System.out.println("Query: " + query.toBsonDocument());
+        Document query;
+        try {
+            // Attempt to parse the search text as an integer
+            int searchId = Integer.parseInt(searchText);
 
-        Document articleDoc = collection.find(query).first();
+            // Search specifically by ID first
+            query = new Document("Article_id", searchId);
 
-        // Check if an article was found
-        if (articleDoc != null) {
-            // Fill the text fields with article details
-            text_idU.setText(String.valueOf(articleDoc.getInteger("Article_id")));
-            text_titleU.setText(articleDoc.getString("Headline"));
-            text_categoryU.setText(articleDoc.getString("Category"));
-            text_authorU.setText(articleDoc.getString("Author"));
-            text_urlU.setText(articleDoc.getString("Link"));
-            text_dateU.setText(articleDoc.getString("Date"));
-            text_shortDescriptionU.setText(articleDoc.getString("Description"));
-        } else {
-            // Clear the text fields if no article is found
-            clearArticleFields();
-            System.out.println("No matching article found.");
+            // Debug query
+            System.out.println("Exact Match Query: " + query.toJson());
+
+            // Find an exact match
+            Document articleDoc = collection.find(query).first();
+
+            if (articleDoc == null) {
+                // If no exact match, fall back to a broader search
+                query = new Document("$or", Arrays.asList(
+                        new Document("Headline", new Document("$regex", searchText).append("$options", "i")),
+                        new Document("Category", new Document("$regex", searchText).append("$options", "i"))
+                ));
+                System.out.println("Fallback Query: " + query.toJson());
+                articleDoc = collection.find(query).first();
+            }
+
+            if (articleDoc == null) {
+                System.out.println("No article found matching the query.");
+                clearArticleFields();
+            } else {
+                System.out.println("Found Article: " + articleDoc.toJson());
+                // Fill the text fields with article details
+                fillArticleFields(articleDoc);
+            }
+        } catch (NumberFormatException e) {
+            // If parsing fails, search only by headline or category
+            query = new Document("$or", Arrays.asList(
+                    new Document("Headline", new Document("$regex", searchText).append("$options", "i")),
+                    new Document("Category", new Document("$regex", searchText).append("$options", "i"))
+            ));
+            System.out.println("Fallback Query (Non-Integer Input): " + query.toJson());
+
+            Document articleDoc = collection.find(query).first();
+            if (articleDoc == null) {
+                System.out.println("No article found matching the query.");
+                clearArticleFields();
+            } else {
+                System.out.println("Found Article: " + articleDoc.toJson());
+                // Fill the text fields with article details
+                fillArticleFields(articleDoc);
+            }
         }
+
+// Log query for debugging
+        System.out.println("Generated Query: " + query.toJson());
+
+// Fetch documents to debug results
+        FindIterable<Document> result = collection.find(query);
+        for (Document doc : result) {
+            System.out.println("Matched Document: " + doc.toJson());
+        }
+
+// Use only the first matching document
+//        Document articleDoc = result.first();
+//
+//        // Check if an article was found
+//        if (articleDoc != null) {
+//            // Fill the text fields with article details
+//            text_idU.setText(String.valueOf(articleDoc.getInteger("Article_id")));
+//            text_titleU.setText(articleDoc.getString("Headline"));
+//            text_categoryU.setText(articleDoc.getString("Category"));
+//            text_authorU.setText(articleDoc.getString("Author"));
+//            text_urlU.setText(articleDoc.getString("Link"));
+//            text_dateU.setText(articleDoc.getString("Date"));
+//            text_shortDescriptionU.setText(articleDoc.getString("Description"));
+//        } else {
+//            // Clear the text fields if no article is found
+//            clearArticleFields();
+//            System.out.println("No matching article found.");
+//        }
+    }
+
+    private void fillArticleFields(Document articleDoc) {
+        text_idU.setText(String.valueOf(articleDoc.getInteger("Article_id")));
+        text_titleU.setText(articleDoc.getString("Headline"));
+        text_categoryU.setText(articleDoc.getString("Category"));
+        text_authorU.setText(articleDoc.getString("Author"));
+        text_urlU.setText(articleDoc.getString("Link"));
+        text_dateU.setText(articleDoc.getString("Date"));
+        text_shortDescriptionU.setText(articleDoc.getString("Description"));
     }
 
     @FXML

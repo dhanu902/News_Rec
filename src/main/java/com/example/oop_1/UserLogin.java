@@ -83,7 +83,7 @@ public class UserLogin implements Initializable {
                     }
                 } else {
                     // Incorrect password
-                    Alert message = new Alert(Alert.AlertType.ERROR, "Recheck credentials");
+                    Alert message = new Alert(Alert.AlertType.WARNING, "Recheck credentials");
                     message.showAndWait();
                 }
             } else {
