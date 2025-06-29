@@ -18,13 +18,14 @@ In today's information-heavy world, users are overwhelmed by countless news arti
 
 ## 🚀 Key Features
 
-- **User Account Management**: Sign up, log in, and manage preferences
-- **News Rating**: Rate articles to shape future recommendations
-- **Personalized Recommendations**: Suggests content based on likes, skips, and reads
-- **Admin Panel**: Add, edit, or remove articles and manage users
-- **Machine Learning Integration**: Simple content-based filtering for personalization
-- **Concurrency Support**: Handles multiple user requests efficiently
-- **Exception & File Handling**: For robust and error-resilient performance
+- ⁠👤 **⁠User Account Management**: Sign up, log in, and manage preferences
+- 📄 **News Rating**: Rate articles to shape future recommendations
+- ⭐ **Personalized Recommendations**: Suggests content based on likes, skips, and reads
+- ⁠👤 **Admin Panel**: Add, edit, or remove articles and manage users
+- ⁠🔄 **Machine Learning Integration**: Simple content-based filtering for personalization
+- ⁠🧵 **Concurrency Support**: Handles multiple user requests efficiently
+- ⁠📂 **Exception & File Handling**: For robust and error-resilient performance
+- ⁠💬 Clean GUI with JavaFX and SceneBuilder
 
 ---
 
@@ -66,7 +67,7 @@ Full test cases are available in the report (19+ test cases).
 
 **Dhanuji Amanda**  
 AI & Data Science Undergraduate  
-[LinkedIn Profile](#) *()*
+[LinkedIn Profile](https://www.linkedin.com/in/dhanuji-jayasingha-94342a27b/) 
 
 ---
 
